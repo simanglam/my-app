@@ -18,6 +18,8 @@ jobs:
               with:
                   node-version: 22
             - name: Build
+              env:
+                  CI: false
               run: |
                   npm install
                   npm run build
