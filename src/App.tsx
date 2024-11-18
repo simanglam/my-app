@@ -1,12 +1,4 @@
-import React, {
-    useState,
-    useRef,
-    useEffect,
-    CSSProperties,
-    useMemo,
-} from "react";
-import { Stage, Layer, Rect, Text, Circle, Group, Line } from "react-konva";
-import { Canvas } from "konva/lib/Canvas";
+import { useState, useRef, useEffect } from "react";
 
 function getRotation(ctx: CanvasRenderingContext2D) {
     const mat = ctx.getTransform();
@@ -27,8 +19,8 @@ function Rotate(props: { degree: number; options: string[] }) {
             const canvas = canvasRef.current;
             const ctx = canvas.getContext("2d");
             if (!ctx) return;
-            ctx.canvas.width = 550;
-            ctx.canvas.height = 550;
+            ctx.canvas.width = 505;
+            ctx.canvas.height = 505;
             const circleRadius = 250;
             ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
             ctx.beginPath();
@@ -92,43 +84,26 @@ function Rotate(props: { degree: number; options: string[] }) {
             const forecanvas = foreCanvasRef.current;
             const forectx = forecanvas.getContext("2d");
             if (!forectx) return;
-            forectx.canvas.width = 550;
+            forectx.canvas.width = 50;
             forectx.canvas.height = 550;
-            const circleRadius = 250;
-            forectx.moveTo(
-                forectx.canvas.width / 2 +
-                    Math.cos((5 / 360) * 2 * Math.PI) * circleRadius * 0.9,
-                forectx.canvas.height / 2 +
-                    Math.sin((5 / 360) * 2 * Math.PI) * circleRadius * 0.9
-            );
+            const circleRadius = 200;
+            forectx.moveTo(0, forectx.canvas.height / 2);
             forectx.beginPath();
-            forectx.lineTo(
-                forectx.canvas.width / 2 +
-                    Math.cos((0 / 360) * 2 * Math.PI) * circleRadius * 0.9,
-                forectx.canvas.height / 2 +
-                    Math.sin((0 / 360) * 2 * Math.PI) * circleRadius * 0.9
-            );
+            forectx.lineTo(0, forectx.canvas.height / 2);
             forectx.arc(
-                forectx.canvas.width / 2,
-                forectx.canvas.width / 2,
+                -(circleRadius * 0.85),
+                forectx.canvas.height / 2,
                 circleRadius,
                 (-5 / 360) * 2 * Math.PI,
                 (5 / 360) * 2 * Math.PI
             );
-            forectx.lineTo(
-                forectx.canvas.width / 2 +
-                    Math.cos((0 / 360) * 2 * Math.PI) * circleRadius * 0.9,
-                forectx.canvas.height / 2 +
-                    Math.sin((0 / 360) * 2 * Math.PI) * circleRadius * 0.9
-            );
-            forectx.moveTo(forectx.canvas.width / 2, forectx.canvas.width / 2);
+            forectx.lineTo(0, forectx.canvas.height / 2);
             forectx.stroke();
         }
         return () => {};
     });
     return (
         <div>
-            <canvas ref={foreCanvasRef} />
             <canvas
                 ref={canvasRef}
                 style={{
@@ -136,6 +111,7 @@ function Rotate(props: { degree: number; options: string[] }) {
                     transition: "transform 10s cubic-bezier(0.6, 0, 0, 1)",
                 }}
             />
+            <canvas ref={foreCanvasRef} />
         </div>
     );
 }
