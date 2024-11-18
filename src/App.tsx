@@ -125,7 +125,7 @@ function Rotate(props: { degree: number; options: string[] }) {
             forectx.stroke();
         }
         return () => {};
-    }, []);
+    });
     return (
         <div>
             <canvas ref={foreCanvasRef} />
@@ -146,7 +146,7 @@ const ColoredRect = () => {
     const handleClick = () => {
         console.log("Clicked");
         let deltaD = Math.random() * 10 * 360;
-        if (deltaD % 15 == 0) deltaD += 2;
+        if (deltaD % 15 === 0) deltaD += 2;
         setDegree((de) => de + 3000 + Math.random() * 10 * 360); // Increment the degree to see the rotation
         console.log(degree);
     };
