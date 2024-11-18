@@ -158,7 +158,7 @@ const ColoredRect = () => {
                     (3 + -Math.floor(((360 + degree) % 360) / (360 / 4))) % 4
                 ]
             }
-            A<button onClick={handleClick}>Click me</button>
+            <button onClick={handleClick}>Click me</button>
             <Rotate degree={degree} options={["A", "B", "C", "D"]} />
         </div>
     );
