@@ -85,7 +85,7 @@ function Rotate(props: { degree: number; options: string[] }) {
             const forectx = forecanvas.getContext("2d");
             if (!forectx) return;
             forectx.canvas.width = 50;
-            forectx.canvas.height = 550;
+            forectx.canvas.height = 505;
             const circleRadius = 200;
             forectx.moveTo(0, forectx.canvas.height / 2);
             forectx.beginPath();
